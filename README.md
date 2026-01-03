@@ -129,8 +129,8 @@ Now test your agent. Run this command inside the terminal:
 >adk run from_Prompt_to_Action_agent
 ```
 
-Ask something simple. If everything works, you should get an answer.
-Now we are all set with the project.
+- Ask something simple. If everything works, you should get an answer.
+- Now we are all set with the project.
 
 ### Step 5: Creation of Prompt to Action Agent
 
@@ -176,27 +176,30 @@ Inside the terminal, run this command:
 >adk web --port 8000
 ```
 *It would give us this link as a response that we click with Ctrl button pressed.*
+
+```bash
 +-----------------------------------------------------------------------------+
 | ADK Web Server started                                                      |
 |                                                                             |
 | For local testing, access at [http://127.0.0.1:8000](http://127.0.0.1:8000).|
 +-----------------------------------------------------------------------------+
+```
 
 Open the link in your browser. Select your agent from the menu.
 
 <img width="1357" height="641" alt="image" src="https://github.com/user-attachments/assets/d26d7ce9-0f5e-4d31-b0ae-9277f8ede117" />
 
-Now you can see:
+*Now you can see:
 
 - The message flow
 - Which agent was called
 - The steps they executed
 
-This helps a lot when debugging multi-agent systems.
+This helps a lot when debugging multi-agent systems.*
 
 ## Conclusion
 
-
+Hope I was able to explain the creation of the basic AI Agent to convert Prompt into Action in the most simplest way and you are finding this article helpful anc valuable but please feel free to let me know your valuable feedback and suggestion so that I could make my explanation more helpful and valuable to the end user.
 
 Cheers! ;)
 
