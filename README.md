@@ -110,13 +110,95 @@ Enter Google API key:
 ```
 <img width="1282" height="557" alt="image" src="https://github.com/user-attachments/assets/24638cd8-b763-4369-998b-5f95604b8503" />
 
+Once you enter the Google API Key and hit enter, your agent project would be created and you would see a tree like this in your VS Code editor:
+
+<img width="281" height="136" alt="image" src="https://github.com/user-attachments/assets/0c27304a-5f49-4f19-a206-01922def23fe" />
+
+Please note the followings:
+- **agent.py** -> This is the main file where your code lives
+- **.env** -> This is where your API key goes
+- **__pycache__** and **.adk** -> These are tool and environment related files
+- **__init__.py"" -> This file declare a directory as a regular Python package and control which modules and functions are exposed to the rest of the project and its users
+
+### Step 4: Test this Default Agent
+
+Open `agent.py`. You will see the default boilerplate code which is in ready to run state.
+
+Now test your agent. Run this command inside the terminal:
+```bash
+>adk run from_Prompt_to_Action_agent
+```
+
+Ask something simple. If everything works, you should get an answer.
+Now we are all set with the project.
+
+### Step 5: Creation of Prompt to Action Agent
+
+Now, we would replace the default root_agent with one upgraded root_agent where we are giving the clear instruction to use the Google Search for the User queries and would add google_search as a tool.
+
+Our agent.py file would look like this after the change
+
+```bash
+from google.adk.agents.llm_agent import Agent
+from google.adk.models.google_llm import Gemini
+from google.adk.runners import InMemoryRunner
+from google.adk.tools import google_search
+from google.genai import types
+
+retry_config=types.HttpRetryOptions(
+    attempts=5,  # Maximum retry attempts
+    exp_base=7,  # Delay multiplier
+    initial_delay=1, # Initial delay before first retry (in seconds)
+    http_status_codes=[429, 500, 503, 504] # Retry on these HTTP errors
+)
+
+root_agent = Agent(
+    name="helpful_assistant",
+    model=Gemini(
+        model="gemini-2.5-flash",
+        retry_options=retry_config
+    ),
+    description="A simple agent that can answer general questions.",
+    instruction="You are a helpful assistant. Use Google Search for current info or if unsure.",
+    tools=[google_search],
+)
+```
+*The previous root agent was able to answer the general and historical queries but not related with the current affairs or latest update. With our clear instruction to use the google search for the current info or in case of unsurity, we have overcome that barrier and this updated root agent can answer the queries related with current affairs and latest update as well.*
+
+**Note**: To come out of the conversation with agent, please use Ctrl+C command
+
+### Step 6: Use the Web Interface
+
+ADK includes a web UI.
+
+Inside the terminal, run this command:
+```bash
+>adk web --port 8000
+```
+*It would give us this link as a response that we click with Ctrl button pressed.*
++-----------------------------------------------------------------------------+
+| ADK Web Server started                                                      |
+|                                                                             |
+| For local testing, access at [http://127.0.0.1:8000](http://127.0.0.1:8000).|
++-----------------------------------------------------------------------------+
+
+Open the link in your browser. Select your agent from the menu.
+
+<img width="1357" height="641" alt="image" src="https://github.com/user-attachments/assets/d26d7ce9-0f5e-4d31-b0ae-9277f8ede117" />
+
+Now you can see:
+
+- The message flow
+- Which agent was called
+- The steps they executed
+
+This helps a lot when debugging multi-agent systems.
+
+## Conclusion
 
 
 
-
-
-<img width="1360" height="635" alt="image" src="https://github.com/user-attachments/assets/742af25a-0e64-4738-9c4f-69d57f2ca2b3" />
-
+Cheers! ;)
 
 
 
