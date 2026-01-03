@@ -199,7 +199,7 @@ This helps a lot when debugging multi-agent systems.
 
 ## Conclusion
 
-Hope I was able to explain the creation of the basic AI Agent to convert Prompt into Action in the most simplest way and you are finding this article helpful anc valuable but please feel free to let me know your valuable feedback and suggestion so that I could make my explanation more helpful and valuable to the end user.
+Hope I was able to explain the creation of the basic AI Agent to convert Prompt into Action in the most simplest way and you are finding this article helpful and valuable but please feel free to let me know your valuable feedback and suggestion so that I could make my explanation more helpful and valuable to the end user.
 
 Cheers! ;)
 
